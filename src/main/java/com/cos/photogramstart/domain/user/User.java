@@ -26,8 +26,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity  // 디비에 테이블을 생성
 public class User {
 	@Id
@@ -54,6 +53,7 @@ public class User {
 	// Lazy = User를 Select 할 때 해당 User id로 등록된 image들을 가져오지마  - 대신 getImages() 함수의 image들이 호출될 때 가져와!!
 	// Eager = User를 Select 할 때 해당 User id로 등록된 image들을 전부 Join해서 가져와!!
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"user"})
 	private List<Image> images; // 양방향 매핑
 	
 	private LocalDateTime createDate;
@@ -62,6 +62,13 @@ public class User {
 	public void createDate() {
 		this.createDate = LocalDateTime.now();
 	}
+
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", website="
+//				+ website + ", bio=" + bio + ", email=" + email + ", phone=" + phone + ", gender=" + gender
+//				+ ", profileImageUrl=" + profileImageUrl + ", role=" + role + ", createDate=" + createDate + "]";
+//	}
 }
 
 
