@@ -206,7 +206,8 @@ function addComment(imageId) {
 		`;
 		commentList.prepend(content);
 	}).fail(error=>{
-		console.log("오류",error);
+		console.log("오류",error.responseJSON);
+		alert(error.responseJSON.data.content);
 	});
 	
 	commentInput.val("");  // 인풋 필드를 깨긋하게 비워준다.

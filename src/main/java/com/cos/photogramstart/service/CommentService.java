@@ -47,9 +47,9 @@ public class CommentService {
 		comment.setContent(content);
 		comment.setImage(image);
 		comment.setUser(userEntity);
-		System.out.println("save 이전 comment : "+System.identityHashCode(comment));
+//		System.out.println("save 이전 comment : "+System.identityHashCode(comment));
 		comment = commentRepository.save(comment);
-		System.out.println("save 이후 comment : "+System.identityHashCode(comment));
+//		System.out.println("save 이후 comment : "+System.identityHashCode(comment));
 //		comment.getUser().setName("우마루2");
 //		System.out.println(System.identityHashCode(comment.getUser()));
 //		System.out.println("Username : " + comment.getUser().getUsername());

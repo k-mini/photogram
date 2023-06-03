@@ -1,5 +1,7 @@
 package com.cos.photogramstart.handler;
 
+import java.util.Map.Entry;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,7 +29,12 @@ public class ControllerExceptionHandler {
 		if (e.getErrorMap() == null) {
 			return Script.back(e.getMessage());
 		} else {
-			return Script.back(e.getErrorMap().toString());
+			StringBuilder msg = new StringBuilder();
+			for (Entry<String,String> entry : e.getErrorMap().entrySet()) {
+				msg.append(entry.getKey() + "은 " + entry.getValue() + " "  );
+			}
+			return Script.back(msg.toString());
+			//return Script.back(e.getErrorMap().toString());
 		}
 	}
 	
